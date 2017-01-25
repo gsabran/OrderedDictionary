@@ -54,6 +54,11 @@ public struct OrderedDictionary<Key: Hashable, Value>: BidirectionalCollection {
     public var orderedValues: LazyMapBidirectionalCollection<OrderedDictionary<Key, Value>, Value> {
         return self.lazy.map { $0.value }
     }
+
+    /// A traditional dictionary with no guarantee on the keys / values order
+    public var dictionary: [Key: Value] {
+        return _keysToValues
+    }
     
     // ======================================================= //
     // MARK: - Key-based Access
